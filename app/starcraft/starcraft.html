@@ -1,0 +1,96 @@
+<div class="container" data-ng-app="myApp">
+  <div data-ng-controller="PlayersController" class="table-container">
+    <div class="limit-selection">
+      
+      <!-- Sets the limit of the page -->
+      <div class="btn-group limiter">
+        <button type="button" class="btn btn-danger">Limit to:</button>
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu" data-ng-model="sort.limit">
+          <li><a href="" data-ng-click="sort.limit = 10">10</a></li>
+          <li><a href="" data-ng-click="sort.limit = 20">20</a></li>
+          <li><a href="" data-ng-click="sort.limit = 25">25</a></li>
+          <li><a href="" data-ng-click="sort.limit = 50">50</a></li>
+          <li class="divider"></li>
+          <li><a href="" data-ng-click="sort.limit = players.length">List All</a></li>
+        </ul>
+      </div>
+      
+      <!-- By Reigion -->
+      <div class="btn-group limiter">
+        <button type="button" class="btn btn-success">By region:</button>
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu" data-ng-model="search">
+          <li><a href="" data-ng-click="search=+'Korea'">Korea</a></li>
+          <li><a href="" data-ng-click="search=+'Europe'">Europe</a></li>
+          <li><a href="" data-ng-click="search=+'America'">America</a></li>
+          <li class="divider"></li>
+          <li><a href="" data-ng-click="search=''">List All</a></li>
+        </ul>
+      </div>
+      <!-- end by reigion -->
+      <!-- By race -->
+      <div class="btn-group limiter">
+        <button type="button" class="btn btn-primary">By race:</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu" data-ng-model="search">
+          <li><a href="" data-ng-click="search=+'Zerg'">Zerg</a></li>
+          <li><a href="" data-ng-click="search=+'Terran'">Terran</a></li>
+          <li><a href="" data-ng-click="search=+'Protoss'">Protoss</a></li>
+          <li class="divider"></li>
+          <li><a href="#" data-ng-click="search=''">List All</a></li>
+        </ul>
+      </div>
+      <!-- end by race -->
+      <!-- Extra list all button -->
+      <button data-ng-click="listAll()" class="btn btn-warning limiter">List All</button>
+      <!-- end list all -->
+      <!-- input search -->
+      <input type="text" class="input" data-ng-model="search" placeholder="Search...">
+      <!-- end input search -->
+    </div>
+
+    <!-- Start data table -->
+    <div class="data-table">
+      <table class="data-table">
+      <!-- Repeat over keys to get the headers -->
+      <thead>
+        <tr>
+          <th data-ng-repeat="key in keys" class="table-head"><a href="" ng-click='sort.predicate = key ; sort.reverse = !sort.reverse'>{{key|uppercase}}</a></th>
+        </tr>
+      </thead>
+      
+      <!-- Repeat the player data and add the limit -->
+      <tbody class="player-data">
+        <tr data-ng-repeat="player in players | orderBy:sort.predicate:sort.reverse | filter:search | skip:(currentPage-1)*sort.limit | limitTo:sort.limit" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-model="player">
+          <td>{{player.username}}</td>
+          <td>{{player.fullname}}</td>
+          <td>{{player.region}}</td>
+          <td>{{player.race}}</td>
+          <td>{{player.wins}}</td>
+          <td>{{player.losses}}</td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pg-container">
+      <ul class="pagination">
+        <li data-ng-class="{disabled: noPrevious()}"><a data-ng-click="prevPage()">Prev</a></li>
+        <li data-ng-repeat="page in setPages()" data-ng-class="{active: isActive(page)}"><a data-ng-click="selectPage(page)">{{page}}</a></li>
+        <li data-ng-class="{disabled: noNext()}"><a data-ng-click="nextPage()">Next</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>

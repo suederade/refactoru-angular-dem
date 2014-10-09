@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row" data-ng-controller="ThumbnailController">
+    <!-- Create in angluar from objects -->
+    <div data-ng-repeat="thumbnail in thumbnails" class="col-lg-4 col-sm-6 front">
+      <img data-ng-src="{{thumbnail.img}}" alt="{{thumbnail.alt}}">
+      <div class="highlighted back">
+        <div class="thumbnail-name">
+          <h2>{{thumbnail.name}}</h2>
+        </div>
+        <div class="thumbnail-cta">
+          <a class="btn btn-success" href="{{thumbnail.url}}">Show Template</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Angular-Seed Stuff -->
+    <ul class="menu">
+      <li><a href="#/homeview">Home</a></li>
+      <li><a href="#/view2">view2</a></li>
+    </ul>
+  <!-- End Angular-Seed stuff -->
+</div>
+

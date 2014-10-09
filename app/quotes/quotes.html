@@ -1,0 +1,100 @@
+  <div class="container" data-ng-controller="QuotesController">
+    <!-- Buttons for adding quote, random quote, and to see all quotes -->
+    <div class="add-quote">
+      <button class="btn btn-success" data-target="#quote" data-toggle="modal">Add a quote</button>
+      <button class="btn btn-warning" data-target="#random-quote" data-toggle="modal" data-ng-click="randomQuoteGenerator()">Random Quote</button>
+      <button class="btn btn-danger clear-search" data-ng-click="search=''">See All</button>
+      <input type="text" data-ng-model="search.author">
+    </div>
+    <!-- End Buttons -->
+    <!-- Display quotes with ng-repeat -->
+    <div>
+      <div class="quote col-xs-6" data-ng-repeat="quote in quotes | filter:{author:search}" id="{{quote.id}}">
+        <div class="inner-quote">
+          <div class="remove" data-ng-click="removeQuote(quote.id)">
+            <span class="glyphicon glyphicon-remove"></span>
+          </div>
+          <blockquote>{{quote.text}}</blockquote>
+          <h4><a href="" class="author-link" data-ng-click="changeFilter(quote.id)">{{quote.author}}</a></h4>
+          <!-- <rating value="quote.rating" max="max" readonly="true" class="rating"> -->
+        </div>
+      </div>
+    </div>
+    <!-- End display quotes -->
+  </div>
+
+<!-- MODAL FOR ADDING QUOTES -->
+  <div class="modal fade" role="dialog" id="quote" > 
+    <div class="modal-dialog">
+      <!-- Modal Content -->
+      <div class="modal-content">
+        <!-- HEAD -->
+        <div class="modal-header">
+          <span>What is the quote?</span>
+        </div>
+        <!-- End modal head -->
+        <!-- BODY -->
+        <div class="modal-body">
+          <form action="" class="form-horizontal">
+          <!-- Quote text -->
+            <div class="form-group">
+              <label for="quote-text" class="col-lg-2 control-label">Quote:</label>
+              <div class="col-lg-10">
+                <textarea type="text" class="form-control" id="quote-text" placeholder="What we do in life echos in eternity." data-ng-model="newQuote.text"></textarea>
+              </div>
+            </div>
+            <!-- End Quote -->
+            <!-- Author -->
+            <div class="form-group">
+              <label for="quote-author" class="col-lg-2 control-label">Author: </label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="quote-author" placeholder="Maximus Decimus Maridius" data-ng-model="newQuote.author">
+              </div>
+            </div>
+            <!-- Rating -->
+            <div class="form-group">
+              <!-- <rating value="newQuote.rating" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" class="col-xs-6"></rating> -->
+            </div>
+            <!-- End Author -->
+          </form>
+        </div>
+        <!-- End Modal Body -->
+        <!-- FOOTER -->
+        <div class="modal-footer">
+          <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-success" type="submit" data-dismiss="modal" data-ng-click="addQuote(newQuote)">Submit</button>
+        </div>
+      </div>
+      <!-- End Modal content -->
+    </div>
+  </div>
+<!-- END MODAL -->
+
+<!-- Random Quote Modal -->
+  <div class="modal fade" role="dialog" id="random-quote" > 
+    <div class="modal-dialog">
+      <!-- Modal Content -->
+      <div class="modal-content">
+        <!-- HEAD -->
+        <div class="modal-header">
+          <span>Random Quote:</span>
+        </div>
+        <!-- End modal head -->
+        <!-- BODY -->
+        <div class="modal-body">
+          <div data-ng-repeat="quote in randomQuote">
+            <blockquote>{{quote.text}}</blockquote>
+            <h4><a href="" class="author-link" data-ng-click="changeFilter(quote.id)">{{quote.author}}</a></h4>
+            <!-- <rating value="quote.rating" max="max" readonly="true" class="rating"> -->
+          </div>
+        </div>
+        <!-- End Modal Body -->
+        <!-- FOOTER -->
+        <div class="modal-footer">
+          <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+      <!-- End Modal content -->
+    </div>
+  </div>
+<!-- End random quote modal -->

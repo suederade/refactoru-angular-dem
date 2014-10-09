@@ -1,0 +1,47 @@
+.add-quote {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.quote {
+  margin-top: 20px;
+}
+
+div.quote {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.inner-quote {
+  background-color: #F1F1F1;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.quote blockquote {
+  margin-bottom: 5px;
+  border-left-color: rgb(190, 190, 190);
+  position: relative;
+}
+
+.quote h4 {
+  margin-bottom: 0;
+}
+
+.remove {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.author-link {
+  text-decoration: none;
+  color: #000;
+}
+
+.author-link:hover {
+  text-decoration: none;
+  color: #b62520;
+}

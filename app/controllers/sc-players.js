@@ -1,0 +1,69 @@
+(function() {
+	myApp.factory('Players', function(){
+		return players
+	});
+
+	myApp.factory('Keys', function(){
+		return keys;
+	});
+
+	myApp.controller('PlayersController', function($scope, Players, Keys){
+		$scope.players = Players;
+		$scope.keys = Keys;
+		$scope.sort= {};
+		$scope.sort.predicate = '';
+		$scope.sort.reverse = false;
+		$scope.sort.limit = $scope.players.length;
+		$scope.currentPage = 1;
+		$scope.pageSize = $scope.sort.limit;
+		$scope.numberOfPages = Math.ceil($scope.players.length/$scope.sort.limit);
+		$scope.numItems = $scope.players.length;
+		$scope.search = '';
+
+		$scope.prevPage = function() {
+			if ($scope.currentPage > 1) {
+				$scope.currentPage--;
+				console.log('Current page: ', $scope.currentPage);
+			}
+		};
+		$scope.nextPage = function() {
+			if ($scope.currentPage < $scope.numberOfPages) {
+				$scope.currentPage++;
+			}
+			console.log('Scope limit:', $scope.sort.limit);
+			console.log('Current page:', $scope.currentPage);
+		};
+		$scope.setPages = function() {
+			var range = _.range(1, ($scope.players.length/$scope.sort.limit)+1);
+			console.log('Range:', range);
+			return range;
+		};
+		$scope.listAll = function() {
+			$scope.sort.limit = $scope.players.length;
+			$scope.currentPage = 1;
+			$scope.numberOfPages = 1;
+			$scope.search = '';
+			console.log('Number of pages:', $scope.numberOfPages);
+		};
+		$scope.noPrevious = function() {
+			return $scope.currentPage === 1;
+		};
+		$scope.noNext = function() {
+			return $scope.currentPage === $scope.numberOfPages;
+		};
+		$scope.isActive = function(page) {
+		    return $scope.currentPage === page;
+	    };
+
+	    $scope.selectPage = function(page) {
+	        if ( ! $scope.isActive(page) ) {
+	          	$scope.currentPage = page;
+	        }
+	    };
+	    $scope.$watch("sort.limit", function(newVal, oldVal) {
+	    	if (oldVal !== newVal && newVal !== $scope.players.length) {
+	    		$scope.numberOfPages = Math.floor($scope.players.length/newVal) +1;
+		    }
+		});	
+	});
+})();

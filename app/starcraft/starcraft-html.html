@@ -1,0 +1,103 @@
+<pre class="language-markup">
+  <code class="language-markup">
+   &lt;div class=&quot;container&quot; data-ng-app=&quot;myApp&quot;&gt;
+       &lt;div data-ng-controller=&quot;PlayersController&quot; class=&quot;table-container&quot;&gt;
+         &lt;div class=&quot;limit-selection&quot;&gt;
+           
+           &lt;!-- Sets the limit of the page --&gt;
+           &lt;div class=&quot;btn-group limiter&quot;&gt;
+             &lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;Limit to:&lt;/button&gt;
+             &lt;button type=&quot;button&quot; class=&quot;btn btn-danger dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+               &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+               &lt;span class=&quot;sr-only&quot;&gt;Toggle Dropdown&lt;/span&gt;
+             &lt;/button&gt;
+             &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot; data-ng-model=&quot;sort.limit&quot;&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;sort.limit = 10&quot;&gt;10&lt;/a&gt;&lt;/li&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;sort.limit = 20&quot;&gt;20&lt;/a&gt;&lt;/li&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;sort.limit = 25&quot;&gt;25&lt;/a&gt;&lt;/li&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;sort.limit = 50&quot;&gt;50&lt;/a&gt;&lt;/li&gt;
+               &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;sort.limit = players.length&quot;&gt;List All&lt;/a&gt;&lt;/li&gt;
+             &lt;/ul&gt;
+           &lt;/div&gt;
+           
+           &lt;!-- By Reigion --&gt;
+           &lt;div class=&quot;btn-group limiter&quot;&gt;
+             &lt;button type=&quot;button&quot; class=&quot;btn btn-success&quot;&gt;By region:&lt;/button&gt;
+             &lt;button type=&quot;button&quot; class=&quot;btn btn-success dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+               &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+               &lt;span class=&quot;sr-only&quot;&gt;Toggle Dropdown&lt;/span&gt;
+             &lt;/button&gt;
+             &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot; data-ng-model=&quot;search&quot;&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;search=+&#39;Korea&#39;&quot;&gt;Korea&lt;/a&gt;&lt;/li&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;search=+&#39;Europe&#39;&quot;&gt;Europe&lt;/a&gt;&lt;/li&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;search=+&#39;America&#39;&quot;&gt;America&lt;/a&gt;&lt;/li&gt;
+               &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;search=&#39;&#39;&quot;&gt;List All&lt;/a&gt;&lt;/li&gt;
+             &lt;/ul&gt;
+           &lt;/div&gt;
+           &lt;!-- end by reigion --&gt;
+           &lt;!-- By race --&gt;
+           &lt;div class=&quot;btn-group limiter&quot;&gt;
+             &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;By race:&lt;/button&gt;
+             &lt;button type=&quot;button&quot; class=&quot;btn btn-primary dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+               &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+               &lt;span class=&quot;sr-only&quot;&gt;Toggle Dropdown&lt;/span&gt;
+             &lt;/button&gt;
+             &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot; data-ng-model=&quot;search&quot;&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;search=+&#39;Zerg&#39;&quot;&gt;Zerg&lt;/a&gt;&lt;/li&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;search=+&#39;Terran&#39;&quot;&gt;Terran&lt;/a&gt;&lt;/li&gt;
+               &lt;li&gt;&lt;a href=&quot;&quot; data-ng-click=&quot;search=+&#39;Protoss&#39;&quot;&gt;Protoss&lt;/a&gt;&lt;/li&gt;
+               &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+               &lt;li&gt;&lt;a href=&quot;#&quot; data-ng-click=&quot;search=&#39;&#39;&quot;&gt;List All&lt;/a&gt;&lt;/li&gt;
+             &lt;/ul&gt;
+           &lt;/div&gt;
+           &lt;!-- end by race --&gt;
+           &lt;!-- Extra list all button --&gt;
+           &lt;button data-ng-click=&quot;listAll()&quot; class=&quot;btn btn-warning limiter&quot;&gt;List All&lt;/button&gt;
+           &lt;!-- end list all --&gt;
+           &lt;!-- input search --&gt;
+           &lt;input type=&quot;text&quot; class=&quot;input&quot; data-ng-model=&quot;search&quot; placeholder=&quot;Search...&quot;&gt;
+           &lt;!-- end input search --&gt;
+         &lt;/div&gt;
+     
+         &lt;!-- Start data table --&gt;
+         &lt;div class=&quot;data-table&quot;&gt;
+           &lt;table class=&quot;data-table&quot;&gt;
+           &lt;!-- Repeat over keys to get the headers --&gt;
+           &lt;thead&gt;
+             &lt;tr&gt;
+               &lt;th data-ng-repeat=&quot;key in keys&quot; class=&quot;table-head&quot;&gt;&lt;a href=&quot;&quot; ng-click=&#39;sort.predicate = key ; sort.reverse = !sort.reverse&#39;&gt;{{key|uppercase}}&lt;/a&gt;&lt;/th&gt;
+             &lt;/tr&gt;
+           &lt;/thead&gt;
+           
+           &lt;!-- Repeat the player data and add the limit --&gt;
+           &lt;tbody class=&quot;player-data&quot;&gt;
+             &lt;tr data-ng-repeat=&quot;player in players | orderBy:sort.predicate:sort.reverse | filter:search | skip:(currentPage-1)*sort.limit | limitTo:sort.limit&quot; data-ng-class-odd=&quot;&#39;odd&#39;&quot; data-ng-class-even=&quot;&#39;even&#39;&quot; data-ng-model=&quot;player&quot;&gt;
+               &lt;td&gt;{{player.username}}&lt;/td&gt;
+               &lt;td&gt;{{player.fullname}}&lt;/td&gt;
+               &lt;td&gt;{{player.region}}&lt;/td&gt;
+               &lt;td&gt;{{player.race}}&lt;/td&gt;
+               &lt;td&gt;{{player.wins}}&lt;/td&gt;
+               &lt;td&gt;{{player.losses}}&lt;/td&gt;
+             &lt;/tr&gt;
+           &lt;/tbody&gt;
+           &lt;/table&gt;
+         &lt;/div&gt;
+     
+         &lt;!-- Pagination --&gt;
+         &lt;div class=&quot;pg-container&quot;&gt;
+           &lt;ul class=&quot;pagination&quot;&gt;
+             &lt;li data-ng-class=&quot;{disabled: noPrevious()}&quot;&gt;&lt;a data-ng-click=&quot;prevPage()&quot;&gt;Prev&lt;/a&gt;&lt;/li&gt;
+             &lt;li data-ng-repeat=&quot;page in setPages()&quot; data-ng-class=&quot;{active: isActive(page)}&quot;&gt;&lt;a data-ng-click=&quot;selectPage(page)&quot;&gt;{{page}}&lt;/a&gt;&lt;/li&gt;
+             &lt;li data-ng-class=&quot;{disabled: noNext()}&quot;&gt;&lt;a data-ng-click=&quot;nextPage()&quot;&gt;Next&lt;/a&gt;&lt;/li&gt;
+           &lt;/ul&gt;
+         &lt;/div&gt;
+     
+       &lt;/div&gt;
+     &lt;/div&gt;
+  </code>
+</pre>
+<script>
+	Prism.highlightAll();
+</script>

@@ -1,0 +1,58 @@
+.table-container {
+  margin-bottom: 20px;
+}
+
+.limit-selection {
+  margin: 0 0 10px 0px;
+  text-align: center;
+}
+.limit-selection select {
+  margin-right: 10px;
+}
+
+.data-table {
+  width: 800px;
+  margin: auto;
+}
+
+.table-head {
+  border: solid 1px #000;
+  background-color: steelblue;
+  text-align: center;
+}
+.table-head a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.player-data {
+  border: solid 1px #000;
+}
+
+.player-data td {
+  border: solid 1px #000;
+  text-align: center;
+  padding: 5px;
+}
+
+.even {
+  background-color: #ccc;
+}
+
+.pagination {
+  text-align: center;
+}
+
+.pg-container {
+  text-align: center;
+}
+
+.input {
+  border-radius: 5px;
+  border: solid 1px #ccc;
+  padding: 6px 12px;
+}
+
+.limiter {
+  margin-right: 10px;
+}
