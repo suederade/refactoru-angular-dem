@@ -3,20 +3,19 @@
 	<!-- Template Sidebar -->
 		<aside class="col-sm-2 sidebar">
 			<accordion close-others="oneAtATime">
-				<accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+				<accordion-group is-open="status.open">
 				    <accordion-heading>
 				    	Starcraft <i class="pull-right fa" data-ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></i>
 				    </accordion-heading>
 			    	<div class="pieces" data-ng-repeat="piece in starcraft" draggable data-state="{{piece.state}}" data-directive="{{piece.directive}}" data-ng-click="$state.go('starcraft')"><img data-ng-src="{{piece.img}}" alt="{{piece.alt}}"></div>
 				</accordion-group>
-				<accordion-group>
+				<accordion-group is-open="open.status">
 				    <accordion-heading>
-				    	Inspirational Quotes <i class="pull-right fa" data-ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></i>
+				    	Inspirational Quotes <i class="pull-right fa" data-ng-class="{'fa-chevron-down': open.status, 'fa-chevron-right': !open.status}"></i>
 				    </accordion-heading>
 			    	<div class="pieces" data-ng-repeat="piece in quotesInfo" draggable data-state="{{piece.state}}" data-directive="{{piece.directive}}" data-ng-click="$state.go('starcraft')"><img data-ng-src="{{piece.img}}" alt="{{piece.alt}}"></div>
 				</accordion-group>
 			</accordion>
-			
 		</aside>
 	<!-- End Template -->
 

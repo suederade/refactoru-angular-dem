@@ -12,7 +12,7 @@
       <div class="quote col-xs-6" data-ng-repeat="quote in quotes | filter:{author:search}" id="{{quote.id}}">
         <div class="inner-quote">
           <div class="remove" data-ng-click="removeQuote(quote.id)">
-            <span class="glyphicon glyphicon-remove"></span>
+            <span class="fa fa-remove"></span>
           </div>
           <blockquote>{{quote.text}}</blockquote>
           <h4><a href="" class="author-link" data-ng-click="changeFilter(quote.id)">{{quote.author}}</a></h4>

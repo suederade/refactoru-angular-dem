@@ -13,6 +13,7 @@ div.quote {
 }
 
 .inner-quote {
+  position: relative;
   background-color: #F1F1F1;
   border-radius: 5px;
   padding: 5px;
