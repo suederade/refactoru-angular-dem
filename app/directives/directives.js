@@ -29,3 +29,10 @@ myApp.directive('droppable', ['$state', function($state){
 		}
 	}
 }]);
+
+myApp.directive('starcraft', function(){
+	return {
+		restrict: 'E',
+		templateUrl: '/app/templates/starcraft-template.html'
+	}
+});
