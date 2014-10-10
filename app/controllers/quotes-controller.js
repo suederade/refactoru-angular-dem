@@ -92,6 +92,7 @@
 			console.log('Random Quote from $scope.quotes:', $scope.quotes[randomNum]);
 			$scope.randomQuote.push($scope.quotes[randomNum]);
 			console.log('Random quote array:', $scope.randomQuote);
+			console.log('Quotes:', $scope.quotes)
 		};
 
 		// For Rating system

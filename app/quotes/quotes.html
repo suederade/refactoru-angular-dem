@@ -1,4 +1,4 @@
-  <div class="container" data-ng-controller="QuotesController">
+  <div class="container">
     <!-- Buttons for adding quote, random quote, and to see all quotes -->
     <div class="add-quote">
       <button class="btn btn-success" data-target="#quote" data-toggle="modal">Add a quote</button>
@@ -16,7 +16,7 @@
           </div>
           <blockquote>{{quote.text}}</blockquote>
           <h4><a href="" class="author-link" data-ng-click="changeFilter(quote.id)">{{quote.author}}</a></h4>
-          <!-- <rating value="quote.rating" max="max" readonly="true" class="rating"> -->
+          <!-- <rating value="quote.rating" max="max" readonly="true" class="rating"></rating> -->
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@
 <!-- END MODAL -->
 
 <!-- Random Quote Modal -->
-  <div class="modal fade" role="dialog" id="random-quote" > 
+  <div class="modal fade" role="dialog" id="random-quote"> 
     <div class="modal-dialog">
       <!-- Modal Content -->
       <div class="modal-content">
@@ -85,7 +85,7 @@
           <div data-ng-repeat="quote in randomQuote">
             <blockquote>{{quote.text}}</blockquote>
             <h4><a href="" class="author-link" data-ng-click="changeFilter(quote.id)">{{quote.author}}</a></h4>
-            <!-- <rating value="quote.rating" max="max" readonly="true" class="rating"> -->
+            <!-- <rating value="quote.rating" max="max" readonly="true" class="rating"></rating> -->
           </div>
         </div>
         <!-- End Modal Body -->

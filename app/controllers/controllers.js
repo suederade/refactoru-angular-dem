@@ -5,44 +5,50 @@ myApp.factory('Thumbnails', function(){
 	{
 		img: 'http://placehold.it/360x500',
 		altImg: "http://placehold.it/150x100",
-		alt: "This template",
-		name: "Super 1",
-		url: "#/homeview"
+		alt: "Starcraft Project",
+		name: "Starcraft",
+		url: "#/view2",
+		sref: 'starcraft'
 	},
 	{
 		img: "http://placehold.it/360x500",
 		altImg: "http://placehold.it/150x100",
 		alt: "This template",
-		name: "Super 2",
-		url: "#/view2"
-	},
-	{
-		img: "http://placehold.it/360x500",
-		altImg: "http://placehold.it/150x100",
-		alt: "This template",
-		name: "Super 1",
-		url: "/"
-	},
-	{
-		img: "http://placehold.it/360x500",
-		altImg: "http://placehold.it/150x100",
-		alt: "This template",
-		name: "Super 2",
-		url: "#/view2"
+		name: "Inspirational Quotes",
+		url: "#/view2",
+		sref: 'quotes'
 	},
 	{
 		img: "http://placehold.it/360x500",
 		altImg: "http://placehold.it/150x100",
 		alt: "This template",
 		name: "Super 1",
-		url: "/"
+		url: "/",
+		sref: '#'
 	},
 	{
 		img: "http://placehold.it/360x500",
 		altImg: "http://placehold.it/150x100",
 		alt: "This template",
 		name: "Super 2",
-		url: "#/view2"
+		url: "#/view2",
+		sref: '#'
+	},
+	{
+		img: "http://placehold.it/360x500",
+		altImg: "http://placehold.it/150x100",
+		alt: "This template",
+		name: "Super 1",
+		url: "/",
+		sref: '#'
+	},
+	{
+		img: "http://placehold.it/360x500",
+		altImg: "http://placehold.it/150x100",
+		alt: "This template",
+		name: "Super 2",
+		url: "#/view2",
+		sref: '#'
 	}
 	];
 
@@ -100,8 +106,11 @@ myApp.factory('QuotesInfo', function(){
 //////////////////////////
 // Thumbnail Controller //
 //////////////////////////
-myApp.controller('ThumbnailController', function($scope, Thumbnails){
+myApp.controller('ThumbnailController', function($scope, $state, Thumbnails){
 	$scope.thumbnails = Thumbnails;
+	$scope.openView = function(sref){
+		$state.go(sref);
+	};
 
 });
 // End Thumbnail Controller

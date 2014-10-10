@@ -169,12 +169,9 @@
 .drop-hover {
   border: solid 1px #9C9C9C;
 }
-.content  {
-  z-index: 0;
-}
 
 .pieces {
-  z-index: 1000;
+  z-index: 150;
   margin-top: 10px;
   text-align: center;
 }
